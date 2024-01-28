@@ -86,10 +86,11 @@ export default function CardSection () {
     return (
         <div className="main-container">
             <div className="score">
-                <h3>Score: {score}</h3>
-                <h3>High Score: {highScore}</h3>
+                <h3>SCORE: {score}</h3>
+                <h3>HIGH SCORE: {highScore}</h3>
             </div>
-            <p>Do not click on the same Pokemon twice!</p>
+            <div style={{fontSize: "28px"}}>Do not click on the same Pokemon twice!</div>
+            <div style={{margin: "12px 0", fontWeight: 600}}>{pokemonsCliked.length} / {pokemons.length}</div>
             {pokemons.length < NUMBER_POKEMONS ? <h2>Loading...</h2> : 
                 <div className="card-section">
                     {pokemons.map((pokemon) =>
