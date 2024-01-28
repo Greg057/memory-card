@@ -3,14 +3,12 @@ import { useState, useEffect } from "react"
 export default function Card () {
     const [pokemons, setPokemons] = useState()
 
-    function setUpPokemons (data) {
-        const pokemonsArray = data.map(async pokemon => {
+    async function setUpPokemons (data) {
+        const pokemonArray = await Promise.all(data.map(async pokemon => {
             const pokemonImage = await getPokemonImage(pokemon.url)
-            console.log(pokemonImage)
             return {name: pokemon.name, image: pokemonImage}
-        })
-        setPokemons(pokemonsArray)
-        console.log(pokemons)
+        }))
+        setPokemons(pokemonArray)
     }
 
     function getPokemonImage (url) { 
@@ -24,10 +22,20 @@ export default function Card () {
     useEffect(() => {
         fetch("https://pokeapi.co/api/v2/pokemon/?limit=5")
             .then(res => res.json())
-            .then(data => setUpPokemons(data.results))            
+            .then(data => setUpPokemons(data.results))           
     }, [])
 
     return (
-        <p>hi</p>
+        <div>
+            {!pokemons ? <h2>Loading...</h2> : 
+                pokemons.map((pokemon, i) => 
+                    <div key={i} className="pokemon">
+                        <h3>{pokemon.name}</h3>
+                        <img src={pokemon.image}/>
+                    </div>
+                )
+            }
+            
+        </div>
     )
 }
