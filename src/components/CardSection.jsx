@@ -51,12 +51,13 @@ export default function CardSection () {
     }, [])
 
     function shuffleArray () {
-        const newArr = pokemons
-        for (let i = newArr.length - 1; i > 0; i--) {
+        const newPokemons = [...pokemons]
+        for (let i = newPokemons.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
-            [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+            [newPokemons[i], newPokemons[j]] = [newPokemons[j], newPokemons[i]];
         }
-        setPokemons(newArr.map(pokemon => pokemon.id = uuidv4()))
+        newPokemons.forEach(pokemon => pokemon.id = uuidv4())
+        setPokemons(newPokemons)
     }
 
     return (
