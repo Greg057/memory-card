@@ -1,8 +1,8 @@
 import './style/App.css'
-import Card from './components/Card'
+import CardSection from './components/CardSection'
 
 export default function App () {
   return (
-    <Card />
+    <CardSection />
   )
 }
