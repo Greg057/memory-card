@@ -5,11 +5,27 @@
 
 body {
     font-family: "Pokemon Pixel Font Regular";
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.main-container {
+    padding: 0px 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+}
+
+.score {
+    display: flex;
+    gap: 48px;
 }
 
 .card-section {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
     
 }
 

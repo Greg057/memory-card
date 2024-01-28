@@ -15,7 +15,7 @@ export default function CardSection () {
     async function setUpPokemons (dataArr) {
         const newPokemon = await Promise.all(dataArr.map(async pokemon => {
             const pokemonImage = pokemon.sprites.front_default
-            const pokemonId = pokemon.game_indices[0].game_index
+            const pokemonId = uuidv4()
             let pokemonName = pokemon.name.replace("-", " ")
             pokemonName = pokemonName[0].toUpperCase() + pokemonName.slice(1)
             return {id: pokemonId, name: pokemonName, image: pokemonImage}
@@ -84,9 +84,12 @@ export default function CardSection () {
     }
 
     return (
-        <div>
-            <h3>Score: {score}</h3>
-            <h3>High Score: {highScore}</h3>
+        <div className="main-container">
+            <div className="score">
+                <h3>Score: {score}</h3>
+                <h3>High Score: {highScore}</h3>
+            </div>
+            <p>Do not click on the same Pokemon twice!</p>
             {pokemons.length < NUMBER_POKEMONS ? <h2>Loading...</h2> : 
                 <div className="card-section">
                     {pokemons.map((pokemon) =>
