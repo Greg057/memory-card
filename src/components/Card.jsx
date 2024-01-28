@@ -10,7 +10,7 @@ export default function Card () {
         const newPokemon = await Promise.all(dataArr.map(async pokemon => {
             const pokemonImage = pokemon.sprites.front_default
             const id = pokemon.game_indices[0].game_index
-            let name = (pokemon.name.includes("-") ? pokemon.name.replace("-", " ") : pokemon.name)
+            let name = pokemon.name.replace("-", " ")
             name = name[0].toUpperCase() + name.slice(1)
             return {id: id, name: name, image: pokemonImage}
         }))
@@ -55,8 +55,8 @@ export default function Card () {
                 <div className="card-section">
                     {pokemons.map((pokemon, i) =>
                         <div key={i} className="pokemon">
-                            <h3>{pokemon.name}</h3>
                             <img src={pokemon.image}/>
+                            <h3>{pokemon.name}</h3>
                         </div>
                     )}
                 </div>
