@@ -4,8 +4,13 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 export default function CardSection () {
-    const NUMBER_POKEMONS = 10
     const [pokemons, setPokemons] = useState([])
+    const [pokemonsCliked, setPokemonsClicked] = useState([])
+    const [score, setScore] = useState(0)
+    const [highScore, setHighScore] = useState(0)
+    const [isGameOver, setIsGameOver] = useState(false)
+
+    const NUMBER_POKEMONS = 10
 
     async function setUpPokemons (dataArr) {
         const newPokemon = await Promise.all(dataArr.map(async pokemon => {
@@ -48,7 +53,25 @@ export default function CardSection () {
 
         fetchPokemons().then(dataArr => setUpPokemons(dataArr))
 
-    }, [])
+    }, [isGameOver])
+
+    function handleClick (name) {
+        if (pokemonsCliked.includes(name)) {
+            gameOver()
+        } else {
+            setPokemonsClicked([...pokemonsCliked, name])
+            setScore(score + 1)
+            score >= highScore && setHighScore(score + 1)
+            shuffleArray()
+        } 
+    }
+
+    function gameOver() {
+        console.log("Game over")
+        setScore(0)
+        setPokemonsClicked([])
+        setIsGameOver(!isGameOver)
+    }
 
     function shuffleArray () {
         const newPokemons = [...pokemons]
@@ -62,10 +85,12 @@ export default function CardSection () {
 
     return (
         <div>
+            <h3>Score: {score}</h3>
+            <h3>High Score: {highScore}</h3>
             {pokemons.length < NUMBER_POKEMONS ? <h2>Loading...</h2> : 
                 <div className="card-section">
                     {pokemons.map((pokemon) =>
-                        <Card pokemon={pokemon} key={pokemon.id} onClick={shuffleArray}/>
+                        <Card pokemon={pokemon} key={pokemon.id} onClick={handleClick}/>
                     )}
                 </div>
             }
