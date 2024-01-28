@@ -33,7 +33,7 @@ body {
     font-family: 'Pokemon Solid', sans-serif;
     color: #FCCF00;
     letter-spacing: 2px;
-    -webkit-text-stroke: 2px #055aaa
+    -webkit-text-stroke: 2.5px #055aaa
 
 }
 
@@ -45,10 +45,11 @@ body {
 }
 
 .pokemon {
-    background-color: rgba(255, 255, 255, 0.685);
+    background-color: rgba(255, 255, 255, 0.767);
     text-align: center;
     border-radius: 12px;
     cursor: pointer;
+    border: 3px solid #FCCF00;
 }
 
 .pokemon h3 {
