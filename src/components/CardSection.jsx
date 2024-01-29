@@ -10,7 +10,7 @@ export default function CardSection () {
     const [highScore, setHighScore] = useState(0)
     const [isGameOver, setIsGameOver] = useState(false)
 
-    const NUMBER_POKEMONS = 5
+    const NUMBER_POKEMONS = 10
 
     async function setUpPokemons (dataArr) {
         const newPokemon = await Promise.all(dataArr.map(async pokemon => {
@@ -66,7 +66,7 @@ export default function CardSection () {
             score >= highScore && setHighScore(score + 1)
             shuffleArray()
         } 
-        if (pokemonsCliked.length === pokemons.length) {
+        if (pokemonsCliked.length + 1 === pokemons.length) {
             gameOver("win")
         }
     }
