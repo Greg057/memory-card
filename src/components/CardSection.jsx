@@ -10,7 +10,7 @@ export default function CardSection () {
     const [highScore, setHighScore] = useState(0)
     const [isGameOver, setIsGameOver] = useState(false)
 
-    const NUMBER_POKEMONS = 10
+    const NUMBER_POKEMONS = 5
 
     async function setUpPokemons (dataArr) {
         const newPokemon = await Promise.all(dataArr.map(async pokemon => {
@@ -24,6 +24,8 @@ export default function CardSection () {
     }
 
     useEffect(() => {
+        setPokemonsClicked([])
+
         async function fetchPokemons () {
             const dataArr = []
             const promises = [];
@@ -57,19 +59,20 @@ export default function CardSection () {
 
     function handleClick (name) {
         if (pokemonsCliked.includes(name)) {
-            gameOver()
+            gameOver("lost")
         } else {
             setPokemonsClicked([...pokemonsCliked, name])
             setScore(score + 1)
             score >= highScore && setHighScore(score + 1)
             shuffleArray()
         } 
+        if (pokemonsCliked.length === pokemons.length) {
+            gameOver("win")
+        }
     }
 
-    function gameOver() {
-        console.log("Game over")
-        setScore(0)
-        setPokemonsClicked([])
+    function gameOver(gameOutcome) {
+        gameOutcome === "lost" && setScore(0)
         setIsGameOver(!isGameOver)
     }
 
