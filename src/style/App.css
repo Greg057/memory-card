@@ -33,8 +33,12 @@ body {
     font-family: 'Pokemon Solid', sans-serif;
     color: #FCCF00;
     letter-spacing: 2px;
-    -webkit-text-stroke: 2.5px #055aaa
+    -webkit-text-stroke: 1.5px #055aaa
 
+}
+
+.score h3 {
+    margin: 12px 0;
 }
 
 .card-section {
