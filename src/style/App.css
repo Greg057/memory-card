@@ -1,6 +1,6 @@
 @font-face {
     font-family:"Pokemon Pixel Font Regular";
-    src: url(./pokemon_pixel_font.woff)
+    src: url(/pokemon_pixel_font.woff)
 }
 
 body {
@@ -14,7 +14,7 @@ body {
 
 .app {
     height: 100vh;
-    background-image: url(./wallpaper.gif);
+    background-image: url(/wallpaper.gif);
     background-size: 100%;
     background-repeat: no-repeat;
 }
