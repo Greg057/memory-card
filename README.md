@@ -1,7 +1,7 @@
 # Memory Card Game
 
 ## Project Overview
-This project is a Memory Card game built with React, aimed at reinforcing concepts such as state management and using hooks while fetching data from an external API. The game challenges users to match pairs of cards, keeping track of their current and best scores.
+This project is a Memory Card game built with React, aimed at reinforcing concepts such as state management and using hooks while fetching data from an external API. The game challenges users to click on all cards, without clicking twice on the same one, keeping track of their current and best scores.
 
 ## Deployment
 The project is deployed and accessible online at the following link: [Memory Card Game](https://memory-card-steel.vercel.app/)
